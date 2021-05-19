@@ -1,5 +1,5 @@
 const employee = require('./employee.js');
-/*
+
 // desc + tab
 describe('僱員行為', () => {
 
@@ -83,17 +83,29 @@ describe('隨便測試', () => {
   });
 
 });
-*/
 
-describe('驗證非同步', () => {
-  it('驗證遠端資料', () => {
+// desc + tab
+describe('驗證遠端資料(非同步)', () => {
+
+  it('驗證非同步', () => {
+    const data = employee.getData();
+    expect(data.title).toMatch('delectus aut autem');   //failed
+  });
+
+  it('callback', () => {
+    return employee.getData().then(data => {
+      expect(data.title).toMatch('delectus aut autem');
+    });
+  });
+
+  it('assertions', () => {
     expect.assertions(1);
     return employee.getData(1).then(data => {
       expect(data.title).toMatch('delectus aut autem');
     });
   });
 
-  it('Async 驗證非同步', async () => {
+  it('async', async () => {
     const data = await employee.getData();
     expect(data.title).toMatch('delectus aut autem');
   });

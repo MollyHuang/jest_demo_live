@@ -31,6 +31,7 @@ methods.getData().then(data => {
   console.log(2, data2);  // 後
 });
 console.log(1, data2);  // 先
+// cmd 可執行 node employee.js 來測試上方//結果
 */
 
 
